@@ -46,7 +46,7 @@ const products = [
     desc: 'Hermosa masa vinotinto con un sabor inconfundible y fina textura.',
     price: 3.50,
     category: 'clasicas',
-    images: ['./galletas/galleta_13.jpg', './galletas/galleta_3.jpg'],
+    images: ['./galletas/galleta_4.jpg', './galletas/galleta_3.jpg'],
     type: 'single'
   },
   {
@@ -55,7 +55,7 @@ const products = [
     desc: 'Nuestra galleta Catira, deliciosamente rellena con exquisito chocolate de avellanas.',
     price: 4.50,
     category: 'rellenas',
-    images: ['./galletas/galleta_5.jpg', './galletas/galleta_11.jpg'],
+    images: ['./galletas/galleta_5.jpg'],
     type: 'single'
   },
   {
@@ -64,7 +64,7 @@ const products = [
     desc: 'Locura total de cacao. Galleta oscura rellena para la mejor experiencia.',
     price: 4.50,
     category: 'rellenas',
-    images: ['./galletas/galleta_15.jpg', './galletas/galleta_2.jpg'],
+    images: ['./galletas/galleta_15.jpg'],
     type: 'single'
   },
   {
@@ -73,7 +73,7 @@ const products = [
     desc: 'Masa Red Velvet suave, rellena con un corazón de exquisito chocolate blanco derretido.',
     price: 4.50,
     category: 'rellenas',
-    images: ['./galletas/galleta_4.jpg', './galletas/galleta_10.jpg', './galletas/galleta_12.jpg'],
+    images: ['./galletas/galleta_13.jpg'],
     type: 'single'
   },
   {
@@ -82,7 +82,7 @@ const products = [
     desc: 'Increíble galleta rellena de una suave y cítrica crema de limón real.',
     price: 4.50,
     category: 'rellenas',
-    images: ['./galletas/galleta_17.jpg', './galletas/galleta_8.jpg'],
+    images: ['./galletas/galleta_11.jpg'],
     type: 'single'
   }
 ];

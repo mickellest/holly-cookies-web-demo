@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Galletas Preview</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <script>
+      for(let i=1; i<=17; i++) {
+        document.write(`<div style="border: 1px solid black; padding: 5px;">
+          <img src="galletas/galleta_${i}.jpg" width="150" height="150" style="object-fit: cover;"><br>
+          galleta_${i}.jpg
+        </div>`);
+      }
+    </script>
+  </div>
+</body>
+</html>
