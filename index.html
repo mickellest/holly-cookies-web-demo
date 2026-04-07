@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Holly Cookies | Demo Catálogo</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <div id="app">
+      <!-- Welcome Modal / Age Gate equivalent if needed -->
+      <!-- We'll skip the welcome modal for now, focus on the UI -->
+
+      <header class="header">
+        <div class="header-bg">
+          <img src="./Recurso 6f.png" alt="Mascota Holly Cookies" class="mascot-image" />
+        </div>
+        <div class="logo-container">
+          <img src="./holy cookies inspo-06.png" alt="Holly Cookies Logo" class="logo" />
+        </div>
+      </header>
+      
+      <div class="store-info">
+        <h1 class="brand-name">Holly Cookies</h1>
+        <p class="location">📍 San Diego, Carabobo</p>
+        <div class="badges">
+          <span class="badge">🛵 Delivery Local</span>
+          <span class="badge">📦 Envíos Nacionales</span>
+          <span class="badge">👩🏻‍🍳 Por Encargo</span>
+        </div>
+      </div>
+
+      <nav class="category-nav">
+        <ul class="category-list">
+          <li class="category-item active" data-target="destacados">Destacados</li>
+          <li class="category-item" data-target="clasicas">NY Clásicas</li>
+          <li class="category-item" data-target="rellenas">NY Rellenas</li>
+          <li class="category-item desktop-hidden" data-target="galeria">Galería</li>
+        </ul>
+      </nav>
+
+      <div class="content">
+        <!-- Destacados Carousel -->
+        <section id="destacados" class="section">
+          <h2 class="section-title">⭐ Productos Destacados</h2>
+          <!-- Product cards will be injected by main.js into these containers -->
+          <div class="carousel" id="carouselDestacados"></div>
+        </section>
+
+        <!-- Listado de Productos -->
+        <section id="clasicas" class="section wrapper-box">
+          <h2 class="section-title"><span>|</span> NY Clásicas</h2>
+          <div class="product-list" id="listClasicas"></div>
+        </section>
+
+        <section id="rellenas" class="section wrapper-box">
+          <h2 class="section-title"><span>|</span> NY Rellenas</h2>
+          <div class="product-list" id="listRellenas"></div>
+        </section>
+        
+        <section id="galeria" class="section wrapper-box">
+          <h2 class="section-title">✨ Detrás de la Magia</h2>
+          <div class="gallery-grid">
+            <div class="gallery-video">
+              <video src="./galletas/video_18.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <div class="gallery-photos">
+              <img src="./galletas/galleta_1.jpg" />
+              <img src="./galletas/galleta_10.jpg" />
+              <img src="./galletas/galleta_14.jpg" />
+              <img src="./galletas/galleta_15.jpg" />
+            </div>
+          </div>
+        </section>
+      </div>
+
+
+        
+        <!-- Spacer for FAB -->
+        <div style="height: 100px;"></div>
+
+      <!-- Floating Cart Button -->
+      <div class="fab-container">
+        <button id="cartBtn" class="cart-fab" onclick="toggleCartModal()">
+          Ver Carrito (<span id="cartCount">0</span>) - $<span id="cartTotal">0.00</span>
+        </button>
+      </div>
+
+      <!-- Product Modal (Universal) -->
+      <div id="productModal" class="modal-backdrop hidden" style="z-index: 101;">
+        <div class="modal product-modal">
+          <div class="modal-header">
+            <button onclick="closeProductModal()" class="close-btn">&times;</button>
+          </div>
+          <div class="modal-content product-detail-content">
+            <div class="product-gallery">
+              <img id="mainProductImage" src="" alt="Galleta" class="main-img" />
+              <div id="thumbnailGallery" class="thumbnail-list">
+                 <!-- Thumbnails injected here -->
+              </div>
+            </div>
+            
+            <div class="product-header-info">
+              <h2 id="modalProductName">Nombre</h2>
+              <div class="price" id="modalProductPrice">$0.00</div>
+            </div>
+            <p id="modalProductDesc" class="desc">Descripción</p>
+            
+            <!-- Flavor Configurator / Quantity -->
+            <div id="flavorConfigurator" class="configurator">
+               <!-- Injected via JS -->
+            </div>
+            <p id="comboHelperText" class="helper-text"></p>
+          </div>
+          <div class="modal-footer sticky-footer">
+            <div style="position: relative; width: 100%;">
+              <img src="./Recurso 6f.png" alt="Mascota animando compra" class="floating-mascot-btn" />
+              <button id="modalAddBtn" class="whatsapp-btn" onclick="addConfiguredToCart()">
+                Agregar <span id="modalAddTotal"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cart Modal -->
+      <div id="cartModal" class="modal-backdrop hidden" style="z-index: 100;">
+        <div class="modal">
+          <div class="modal-header">
+            <h2>Tu Pedido (<span id="modalCartCount">0</span>)</h2>
+            <button onclick="toggleCartModal()" class="close-btn">&times;</button>
+          </div>
+          <div class="modal-content" id="cartItems">
+            <!-- Items will be injected here -->
+          </div>
+          <div class="modal-footer">
+            <div class="total-row">
+              <span>Total:</span>
+              <span id="modalTotal">$0.00</span>
+            </div>
+            <button class="whatsapp-btn" onclick="sendToWhatsApp()">
+              Pedir por WhatsApp 📱
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
