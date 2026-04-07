@@ -25,7 +25,7 @@ const products = [
   {
     id: 'catira',
     name: 'La Catira',
-    desc: 'Nuestra clásica galleta de masa clara sabor a vainilla con increíbles chispas de chocolate derretidas.',
+    desc: 'Nuestra clásica galleta de masa clara sabor a vainilla con increíbles chispas.',
     price: 3.50,
     category: 'clasicas',
     images: ['./galletas/galleta_8.jpg', './galletas/galleta_5.jpg', './galletas/galleta_11.jpg', './galletas/galleta_17.jpg'],
@@ -34,37 +34,67 @@ const products = [
   {
     id: 'chocho',
     name: 'Chocho',
-    desc: 'Masa oscura de puro cacao para los verdaderos amantes del doble chocolate.',
+    desc: 'Masa oscura de puro cacao para los verdaderos amantes del chocolate.',
     price: 3.50,
     category: 'clasicas',
-    images: ['./galletas/galleta_6.jpg', './galletas/galleta_2.jpg', './galletas/galleta_15.jpg'],
+    images: ['./galletas/galleta_6.jpg', './galletas/galleta_2.jpg'],
     type: 'single'
   },
   {
-    id: 'red',
+    id: 'red_clasica',
     name: 'Red Velvet',
-    desc: 'Hermosa masa vinotinto con un sabor inconfundible y full chocolate vibrante.',
+    desc: 'Hermosa masa vinotinto con un sabor inconfundible y fina textura.',
+    price: 3.50,
+    category: 'clasicas',
+    images: ['./galletas/galleta_13.jpg', './galletas/galleta_3.jpg'],
+    type: 'single'
+  },
+  {
+    id: 'catira_rellena',
+    name: 'Catira (Chocolate de Avellanas)',
+    desc: 'Nuestra galleta Catira, deliciosamente rellena con exquisito chocolate de avellanas.',
     price: 4.50,
     category: 'rellenas',
-    images: ['./galletas/galleta_13.jpg', './galletas/galleta_3.jpg', './galletas/galleta_4.jpg', './galletas/galleta_10.jpg', './galletas/galleta_12.jpg'],
+    images: ['./galletas/galleta_5.jpg', './galletas/galleta_11.jpg'],
     type: 'single'
   },
   {
-    id: 'duo',
-    name: 'Dúo Pack',
-    desc: 'Llévate un par perfecto y prueba lo mejor de ambos mundos.',
-    price: 7.00,
+    id: 'triple_choco',
+    name: 'Triple Chocolate',
+    desc: 'Locura total de cacao. Galleta oscura rellena para la mejor experiencia.',
+    price: 4.50,
     category: 'rellenas',
-    images: ['./galletas/galleta_7.jpg', './galletas/galleta_10.jpg'],
-    type: 'combo',
-    maxSelection: 2
+    images: ['./galletas/galleta_15.jpg', './galletas/galleta_2.jpg'],
+    type: 'single'
+  },
+  {
+    id: 'red_rellena',
+    name: 'Red Velvet (Chocolate Blanco)',
+    desc: 'Masa Red Velvet suave, rellena con un corazón de exquisito chocolate blanco derretido.',
+    price: 4.50,
+    category: 'rellenas',
+    images: ['./galletas/galleta_4.jpg', './galletas/galleta_10.jpg', './galletas/galleta_12.jpg'],
+    type: 'single'
+  },
+  {
+    id: 'limon',
+    name: 'Limón',
+    desc: 'Increíble galleta rellena de una suave y cítrica crema de limón real.',
+    price: 4.50,
+    category: 'rellenas',
+    images: ['./galletas/galleta_17.jpg', './galletas/galleta_8.jpg'],
+    type: 'single'
   }
 ];
 
 const availableFlavors = [
-  { id: 'La Catira', name: 'La Catira' },
+  { id: 'Catira', name: 'Catira' },
   { id: 'Chocho', name: 'Chocho' },
-  { id: 'Red Velvet', name: 'Red Velvet' }
+  { id: 'Red Velvet', name: 'Red Velvet' },
+  { id: 'Catira Avellana', name: 'Catira (Avellanas)' },
+  { id: 'Triple', name: 'Triple Chocolate' },
+  { id: 'Red Blanca', name: 'Red Velvet (Blanco)' },
+  { id: 'Limon', name: 'Limón' }
 ];
 
 // ----------------------------------------------------
@@ -420,10 +450,10 @@ window.sendToWhatsApp = function() {
     }
   });
 
-  message += `\n*TOTAL: $${total.toFixed(2)}*\n\n`;
+  message += "\n*TOTAL: $" + total.toFixed(2) + "*\n\n";
   message += "Por favor indíquenme los métodos de pago y el delivery. ¡Gracias!";
 
   const encodedMessage = encodeURIComponent(message);
-  const phoneNumber = "584121234567"; // Set your real number
+  const phoneNumber = "584244242900"; // Whatsapp Updated
   window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
 }
