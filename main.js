@@ -11,7 +11,28 @@ const products = [
     category: 'destacados', 
     images: ['./galletas/galleta_9.jpg', './galletas/galleta_1.jpg'],
     type: 'combo',
-    maxSelection: 4
+    maxSelection: 4,
+    allowedFlavors: 'all'
+  },
+  {
+    id: 'promo_2',
+    name: 'Promo 2 Clásicas',
+    desc: 'Lleva 2 de nuestras galletas clásicas por un precio especial.',
+    price: 4.00,
+    category: 'destacados',
+    images: ['./galletas/galleta_9.jpg', './galletas/galleta_1.jpg'],
+    type: 'combo',
+    maxSelection: 2,
+    allowedFlavors: 'clasicas'
+  },
+  {
+    id: 'box_30',
+    name: 'Box 30 Mini Galletas',
+    desc: 'Un box de 30 deliciosas mini galletas de 30gr, ideales para compartir.',
+    price: 10.00,
+    category: 'destacados',
+    images: ['./galletas/galleta_1.jpg', './galletas/galleta_9.jpg'],
+    type: 'single'
   },
   {
     id: 'cake',
@@ -26,7 +47,7 @@ const products = [
     id: 'catira',
     name: 'La Catira',
     desc: 'Nuestra clásica galleta de masa clara sabor a vainilla con increíbles chispas.',
-    price: 3.50,
+    price: 2.50,
     category: 'clasicas',
     images: ['./galletas/galleta_8.jpg', './galletas/galleta_5.jpg', './galletas/galleta_11.jpg', './galletas/galleta_17.jpg'],
     type: 'single'
@@ -35,7 +56,7 @@ const products = [
     id: 'chocho',
     name: 'Chocho',
     desc: 'Masa oscura de puro cacao para los verdaderos amantes del chocolate.',
-    price: 3.50,
+    price: 2.50,
     category: 'clasicas',
     images: ['./galletas/galleta_6.jpg', './galletas/galleta_2.jpg'],
     type: 'single'
@@ -44,7 +65,7 @@ const products = [
     id: 'red_clasica',
     name: 'Red Velvet',
     desc: 'Hermosa masa vinotinto con un sabor inconfundible y fina textura.',
-    price: 3.50,
+    price: 2.50,
     category: 'clasicas',
     images: ['./galletas/galleta_4.jpg', './galletas/galleta_3.jpg'],
     type: 'single'
@@ -53,7 +74,7 @@ const products = [
     id: 'catira_rellena',
     name: 'Catira (Chocolate de Avellanas)',
     desc: 'Nuestra galleta Catira, deliciosamente rellena con exquisito chocolate de avellanas.',
-    price: 4.50,
+    price: 3.00,
     category: 'rellenas',
     images: ['./galletas/galleta_5.jpg'],
     type: 'single'
@@ -62,7 +83,7 @@ const products = [
     id: 'triple_choco',
     name: 'Triple Chocolate',
     desc: 'Locura total de cacao. Galleta oscura rellena para la mejor experiencia.',
-    price: 4.50,
+    price: 3.00,
     category: 'rellenas',
     images: ['./galletas/galleta_15.jpg'],
     type: 'single'
@@ -71,7 +92,7 @@ const products = [
     id: 'red_rellena',
     name: 'Red Velvet (Chocolate Blanco)',
     desc: 'Masa Red Velvet suave, rellena con un corazón de exquisito chocolate blanco derretido.',
-    price: 4.50,
+    price: 3.00,
     category: 'rellenas',
     images: ['./galletas/galleta_13.jpg'],
     type: 'single'
@@ -80,7 +101,7 @@ const products = [
     id: 'limon',
     name: 'Limón',
     desc: 'Increíble galleta rellena de una suave y cítrica crema de limón real.',
-    price: 4.50,
+    price: 3.00,
     category: 'rellenas',
     images: ['./galletas/galleta_11.jpg'],
     type: 'single'
@@ -88,13 +109,13 @@ const products = [
 ];
 
 const availableFlavors = [
-  { id: 'Catira', name: 'Catira' },
-  { id: 'Chocho', name: 'Chocho' },
-  { id: 'Red Velvet', name: 'Red Velvet' },
-  { id: 'Catira Avellana', name: 'Catira (Avellanas)' },
-  { id: 'Triple', name: 'Triple Chocolate' },
-  { id: 'Red Blanca', name: 'Red Velvet (Blanco)' },
-  { id: 'Limon', name: 'Limón' }
+  { id: 'Catira', name: 'Catira', type: 'clasicas' },
+  { id: 'Chocho', name: 'Chocho', type: 'clasicas' },
+  { id: 'Red Velvet', name: 'Red Velvet', type: 'clasicas' },
+  { id: 'Catira Avellana', name: 'Catira (Avellanas)', type: 'rellenas' },
+  { id: 'Triple', name: 'Triple Chocolate', type: 'rellenas' },
+  { id: 'Red Blanca', name: 'Red Velvet (Blanco)', type: 'rellenas' },
+  { id: 'Limon', name: 'Limón', type: 'rellenas' }
 ];
 
 // ----------------------------------------------------
@@ -234,7 +255,13 @@ window.openProductModal = function(id) {
 
   if (p.type === 'combo') {
     configHtml += `<h4>Elige tus sabores (${p.maxSelection} galletas)</h4>`;
-    availableFlavors.forEach(f => {
+    
+    let flavorsToShow = availableFlavors;
+    if (p.allowedFlavors === 'clasicas') {
+      flavorsToShow = availableFlavors.filter(f => f.type === 'clasicas');
+    }
+
+    flavorsToShow.forEach(f => {
       currentSelection[f.name] = 0; // initialize
       configHtml += `
         <div class="config-item">
