@@ -454,6 +454,6 @@ window.sendToWhatsApp = function() {
   message += "Por favor indíquenme los métodos de pago y el delivery. ¡Gracias!";
 
   const encodedMessage = encodeURIComponent(message);
-  const phoneNumber = "584244242900"; // Whatsapp Updated
+  const phoneNumber = "584120786317"; // Whatsapp Updated
   window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
 }
