@@ -8,6 +8,16 @@
   --border-color: #eaeaea;
   --white: #ffffff;
   --font-family: 'Nunito', sans-serif;
+  --header-bg-gradient: radial-gradient(circle, #fff3e3 0%, #fbd5b5 100%);
+  --badge-bg: #fceadc;
+}
+
+[data-theme="mothers-day"] {
+  --primary-color: #e84393;
+  --primary-dark: #c22971;
+  --bg-color: #fff5f8;
+  --header-bg-gradient: radial-gradient(circle, #ffe3ee 0%, #ffb6d3 100%);
+  --badge-bg: #ffd1e3;
 }
 
 * {
@@ -45,7 +55,7 @@ body {
   width: 100%;
   height: clamp(140px, 20vh, 180px); /* Much shorter header */
   overflow: hidden;
-  background: radial-gradient(circle, #fff3e3 0%, #fbd5b5 100%);
+  background: var(--header-bg-gradient);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,7 +118,7 @@ body {
 }
 
 .badge {
-  background-color: #fceadc;
+  background-color: var(--badge-bg);
   color: var(--primary-dark);
   font-size: 12px;
   font-weight: 800;

@@ -4,6 +4,24 @@ let currentSelection = {}; // { 'flavor_id': qty } or { 'qty': X } for singles
 
 const products = [
   {
+    id: 'mini_cake_madres',
+    name: 'Mini Cookie Cake',
+    desc: 'Especial Día de las Madres 🌷. Deliciosa Mini Cookie Cake decorada.',
+    price: 9.00,
+    category: 'destacados', 
+    images: ['./galletas/mini_cake_1.jpeg', './galletas/mini_cake_2.jpeg'],
+    type: 'single'
+  },
+  {
+    id: 'mommy_box',
+    name: 'Mommy Box',
+    desc: 'El regalo perfecto 💖. Hermosa caja surtida con nuestras mejores galletas para mamá.',
+    price: 7.00,
+    category: 'destacados', 
+    images: ['./galletas/mommy_box_1.jpeg', './galletas/mommy_box_2.jpeg'],
+    type: 'single'
+  },
+  {
     id: 'caja4',
     name: 'Caja x4 Galletas NY',
     desc: 'Elige tus 4 sabores favoritos y arma tu caja perfecta.',
